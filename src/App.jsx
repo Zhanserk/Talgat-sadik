@@ -165,9 +165,7 @@ export default function App() {
             <div className="crow"><div className="ic">📞</div><div><b>Телефон</b><br /><a href="tel:+77024506081">+7 (702) 450-60-81</a></div></div>
             <div className="crow"><div className="ic">🕗</div><div><b>Жұмыс уақыты</b><span>Дүйсенбі – Жұма, 08:00 – 18:00</span></div></div>
           </div>
-          <div className="map-box">
-            <div>🗺️<br /><br />Түркістан облысы,<br />Сарыағаш қаласы<br /><br /><span style={{ fontWeight: 900 }}>Карта осы жерге енгізіледі</span></div>
-          </div>
+
         </div>
       </section>
 
