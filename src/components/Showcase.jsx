@@ -84,6 +84,12 @@ function Card({ data }) {
           onTouchEnd={onTouchEnd}
         >
           <span className="fcard-counter">{active + 1} / {total}</span>
+          {total > 1 && (
+            <>
+              <button className="fcard-arrow left" onClick={prev} type="button" aria-label="Алдыңғы фото">‹</button>
+              <button className="fcard-arrow right" onClick={next} type="button" aria-label="Келесі фото">›</button>
+            </>
+          )}
         </div>
         {total > 1 && (
           <div className="fcard-thumbs">

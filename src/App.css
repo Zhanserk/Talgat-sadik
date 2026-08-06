@@ -424,6 +424,20 @@ section { padding: 90px 0; }
   letter-spacing: .3px;
   pointer-events: none;
 }
+.fcard-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%; border: none;
+  background: rgba(255,255,255,0.92); color: var(--ink);
+  font-size: 22px; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  transition: background .18s ease, transform .18s ease;
+  z-index: 2;
+}
+.fcard-arrow:hover { background: white; transform: translateY(-50%) scale(1.08); }
+.fcard-arrow:active { transform: translateY(-50%) scale(0.95); }
+.fcard-arrow.left { left: 12px; }
+.fcard-arrow.right { right: 12px; }
 
 .fcard-thumbs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 2px; min-width: 0; }
 .fcard-thumb {
@@ -558,6 +572,9 @@ section { padding: 90px 0; }
 
   /* Showcase / fcard */
   .fcard-main { height: 240px; }
+  .fcard-arrow { width: 34px; height: 34px; font-size: 19px; }
+  .fcard-arrow.left { left: 8px; }
+  .fcard-arrow.right { right: 8px; }
   .fcard-info { padding: 6px 22px 28px; }
   .fcard-info h3 { font-size: 21px; }
   .fcard-badges { gap: 8px; }
@@ -602,7 +619,7 @@ section { padding: 90px 0; }
 /* Touch & accessibility floor */
 @media (hover: none) {
   .gcard:hover, .adv:hover, .doc-link-list a:hover,
-  .footer-col a:hover, .footer-social a:hover {
+  .footer-col a:hover, .footer-social a:hover, .fcard-arrow:hover {
     transform: none;
   }
 }
