@@ -153,7 +153,21 @@ export default function App() {
         </div>
       </section>
 
+      {/* CONTACTS & MAP */}
+      <section className="contact" id="contact">
+        <div className="wrap contact-grid">
+          <div className="ccard">
+            <div className="eyebrow" style={{ background: 'var(--cream)' }}>Байланыс</div>
+            <h2 style={{ margin: '16px 0 24px', fontSize: '28px' }}>Бізбен хабарласыңыз</h2>
+            {/* TODO: нақты көше атауы мен үй нөмірін, телефон және email қой */}
+            <div className="crow"><div className="ic">📍</div><div><b>Мекенжай</b><span>Түркістан облысы, Сарыағаш қаласы , Төлеби көшесі 44</span></div></div>
+            <div className="crow"><div className="ic">👩‍💼</div><div><b>Меңгеруші</b><span>И.Касымбекова</span></div></div>
+            <div className="crow"><div className="ic">📞</div><div><b>Телефон</b><br /><a href="tel:+77024506081">+7 (702) 450-60-81</a></div></div>
+            <div className="crow"><div className="ic">🕗</div><div><b>Жұмыс уақыты</b><span>Дүйсенбі – Жұма, 08:00 – 18:00</span></div></div>
+          </div>
 
+        </div>
+      </section>
 
       <Documents />
       <Footer />
