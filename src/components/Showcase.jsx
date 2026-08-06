@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 const cards = [
   {
@@ -36,24 +36,54 @@ const cards = [
   },
 ];
 
+/* Свайппен ауыстыруға арналған минималды қашықтық (px) */
+const SWIPE_THRESHOLD = 40;
+
 function Card({ data }) {
   const [active, setActive] = useState(0);
   const total = data.images.length;
 
+  const touchStartX = useRef(0);
+  const touchDeltaX = useRef(0);
+  const isSwiping = useRef(false);
+
   const prev = () => setActive((a) => (a - 1 + total) % total);
   const next = () => setActive((a) => (a + 1) % total);
+
+  const onTouchStart = (e) => {
+    if (total <= 1) return;
+    touchStartX.current = e.touches[0].clientX;
+    touchDeltaX.current = 0;
+    isSwiping.current = true;
+  };
+
+  const onTouchMove = (e) => {
+    if (!isSwiping.current) return;
+    touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
+  };
+
+  const onTouchEnd = () => {
+    if (!isSwiping.current) return;
+    isSwiping.current = false;
+    if (touchDeltaX.current > SWIPE_THRESHOLD) {
+      prev();
+    } else if (touchDeltaX.current < -SWIPE_THRESHOLD) {
+      next();
+    }
+    touchDeltaX.current = 0;
+  };
 
   return (
     <div className="fcard">
       <div className="fcard-gallery">
-        <div className="fcard-main" style={{ backgroundImage: `url('${data.images[active]}')` }}>
+        <div
+          className="fcard-main"
+          style={{ backgroundImage: `url('${data.images[active]}')`, touchAction: 'pan-y' }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           <span className="fcard-counter">{active + 1} / {total}</span>
-          {total > 1 && (
-            <>
-              <button className="fcard-arrow left" onClick={prev} type="button" aria-label="Алдыңғы фото">‹</button>
-              <button className="fcard-arrow right" onClick={next} type="button" aria-label="Келесі фото">›</button>
-            </>
-          )}
         </div>
         {total > 1 && (
           <div className="fcard-thumbs">
@@ -98,7 +128,7 @@ export default function Showcase() {
         <div className="section-head center" style={{ margin: '0 auto 52px' }}>
           <div className="eyebrow" style={{ margin: '0 auto 16px', display: 'inline-flex' }}>Жақынырақ танысыңыз</div>
           <h2>Балабақша мен топтар ішінен</h2>
-          <p>Әр фотоны басып, ішкі бөлмелерді толығырақ көре аласыз.</p>
+          <p>Фотоны саусақпен солға/оңға сырғытып ауыстырыңыз.</p>
         </div>
 
         <div className="fcard-stack">
