@@ -399,9 +399,11 @@ section { padding: 90px 0; }
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
 }
 
-.fcard-gallery { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.fcard-gallery { padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .fcard-main {
   position: relative;
   height: 380px;
@@ -412,6 +414,7 @@ section { padding: 90px 0; }
   cursor: grab;
   -webkit-user-select: none;
   user-select: none;
+  min-width: 0;
 }
 .fcard-counter {
   position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
@@ -422,7 +425,7 @@ section { padding: 90px 0; }
   pointer-events: none;
 }
 
-.fcard-thumbs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 2px; }
+.fcard-thumbs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 2px; min-width: 0; }
 .fcard-thumb {
   flex: none; width: 68px; height: 52px; border-radius: 12px;
   background-size: cover; background-position: center;
@@ -432,11 +435,11 @@ section { padding: 90px 0; }
 .fcard-thumb:hover { opacity: 0.9; }
 .fcard-thumb.active { opacity: 1; border-color: var(--coral); }
 
-.fcard-info { padding: 36px 40px 36px 8px; display: flex; flex-direction: column; justify-content: center; }
-.fcard-info h3 { font-size: 26px; margin-bottom: 12px; }
-.fcard-info p { color: var(--ink-soft); font-weight: 600; font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+.fcard-info { padding: 36px 40px 36px 8px; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.fcard-info h3 { font-size: 26px; margin-bottom: 12px; overflow-wrap: break-word; word-break: break-word; }
+.fcard-info p { color: var(--ink-soft); font-weight: 600; font-size: 15px; line-height: 1.7; margin-bottom: 20px; overflow-wrap: break-word; word-break: break-word; }
 
-.fcard-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.fcard-badges { display: flex; flex-wrap: wrap; gap: 10px; min-width: 0; }
 .fcard-badge {
   display: flex; align-items: center; gap: 8px;
   background: var(--cream); border-radius: 14px;
